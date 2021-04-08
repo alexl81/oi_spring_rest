@@ -22,15 +22,16 @@ public class CategoryRestController {
 
     @RequestMapping("/all")
     public ResponseEntity<List<Category>> getAllCategories() {
-        List<Category> categories =  categoryService.findAllCategories();
+        List<Category> categories = categoryService.findAllCategories();
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<Category> getCategoryById (@PathVariable("id") Long id) {
+    public ResponseEntity<Category> getCategoryById(@PathVariable("id") Long id) {
         Category category = categoryService.findCategoryById(id);
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
+
     @PostMapping("/add")
     public ResponseEntity<Category> addCategory(@RequestBody Category category) {
         Category newCategory = categoryService.addCategory(category);
